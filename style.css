@@ -43,7 +43,7 @@ form.loginForm {
 .bar {
 	background-color: #30b9d4;
 	height: 1%;
-	/*margin-top: 5%;*/
+	margin-top: .5%;
 }
 
 div.dropcol {
@@ -60,7 +60,7 @@ div.col-visit {
 
 div.colsite {
 	margin-left: 5%;
-	margin-top: 2%;	
+	margin-top: 2%;
 }
 
 h4.siteName {
@@ -89,4 +89,3 @@ div.coldriver {
 	margin-left: 8%;
 	margin-top: 1%;
 }
-
