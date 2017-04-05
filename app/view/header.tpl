@@ -44,7 +44,7 @@
 			<ul class='primary-nav'>
 				<li><a href="<?= BASE_URL ?>">Home</a></li>
 				<li><a href="<?= BASE_URL ?>/addsite">Add Visit</a></li>
-				<li><a href="header.html">Manage Schedule</a></li>
+				<li><a href="<?= BASE_URL ?>">Manage Schedule</a></li>
 			</ul>
 			
 		</header>
