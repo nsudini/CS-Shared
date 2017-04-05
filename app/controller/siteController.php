@@ -16,11 +16,22 @@ class SiteController {
       case 'home':
         $this->home();
         break;
+      case 'addsite':
+        $this->addsite();
+        break;
     }
   }
 
   public function home() {
     include_once SYSTEM_PATH.'/view/header.tpl';
+    include_once SYSTEM_PATH.'/view/home.tpl';
+    include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+
+  public function addsite() {
+    include_once SYSTEM_PATH.'/view/header.tpl';
+    include_once SYSTEM_PATH.'/view/addsite.tpl';
+    include_once SYSTEM_PATH.'/view/footer.tpl';
   }
 
 }
