@@ -24,10 +24,19 @@ class SiteController {
         $pw = $_POST['pw'];
         $this->login($un, $pw);
         break;
+      case 'add_site':
+        $sn = $_POST['sn'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $this->add_site($sn, $date, $time);
     }
   }
 
   public function home() {
+    $db = new Db();
+
+    $rows = $db->select("SELECT * FROM `site_visits`");
+
     include_once SYSTEM_PATH.'/view/header.tpl';
     include_once SYSTEM_PATH.'/view/home.tpl';
     include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -61,5 +70,22 @@ class SiteController {
     session_destroy();
     header('Location: '.BASE_URL);
     exit();
+  }
+
+  public function add_site($sn, $date, $time) {
+    $db = new Db();
+
+    $sn = $db->quote($sn);
+    $date = $db->quote($date);
+    $time = $db->quote($time);
+
+    $result = $db->query("INSERT INTO `site_visits` (`site_name`,`date`, `time`) VALUES (" . $sn . "," . $date . "," . $time .")");
+
+    if($result) {
+      echo "pass";
+    }
+    else {
+      echo "fail";
+    }
   }
 }
