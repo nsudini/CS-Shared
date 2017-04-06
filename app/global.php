@@ -7,3 +7,5 @@ include_once 'config.php';
 function __autoload($class_name) {
 	require_once 'model/'.$class_name.'.class.php';
 }
+
+session_start();

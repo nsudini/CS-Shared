@@ -7,3 +7,4 @@ RewriteEngine on
 # Site
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^addsite/?$ app/controller/siteController.php?action=addsite [QSA,L]
+RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
