@@ -82,10 +82,10 @@ class SiteController {
     $result = $db->query("INSERT INTO `site_visits` (`site_name`,`date`, `time`) VALUES (" . $sn . "," . $date . "," . $time .")");
 
     if($result) {
-      echo "pass";
+      header('Location: '.BASE_URL);
     }
     else {
-      echo "fail";
+      echo "failed to add site visit";
     }
   }
 }
