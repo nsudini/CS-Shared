@@ -8,4 +8,6 @@ RewriteEngine on
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^addsite/?$ app/controller/siteController.php?action=addsite [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
-RewriteRule ^add_site/?$ app/controller/siteController.php?action=add_site [QSA,L]
+RewriteRule ^submit_site/?$ app/controller/siteController.php?action=submit_site [QSA,L]
+RewriteRule ^create_account/?$ app/controller/siteController.php?action=create_account [QSA,L]
+RewriteRule ^submit_account/?$ app/controller/siteController.php?action=submit_account [QSA,L]

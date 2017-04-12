@@ -19,22 +19,25 @@
 				<h1 class="logo">CS<sup>Shared</sup></h1>
 			</a>
 			<form class="form-inline loginForm" action="<?= BASE_URL ?>/login" method="post">
-					<?php if (!isset($_SESSION['user'])) { ?>
-						<label class="sr-only" for="inlineFormInput">Username</label>
-					  <input name="un" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Username">
+				<?php if (!isset($_SESSION['user'])) { ?>
+					<label class="sr-only" for="inlineFormInput">Username</label>
+				  <input name="un" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Username">
 
-					  <label class="sr-only" for="inlineFormInputGroup">Password</label>
-					  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-					    <input name="pw" type="password" class="form-control" id="inlineFormInputGroup" placeholder="Password">
-					  </div>
-					<?php } ?>
+				  <label class="sr-only" for="inlineFormInputGroup">Password</label>
+				  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+				    <input name="pw" type="password" class="form-control" id="inlineFormInputGroup" placeholder="Password">
+				  </div>
+				<?php } ?>
 
-					<?php if (isset($_SESSION['user'])) { ?>
-						<button type="submit" class="btn btn-primary loginbutton">Logout</button>
-					<?php } else { ?>
-				  	<button type="submit" class="btn btn-primary loginbutton">Login</button>
-					<?php } ?>
+				<?php if (isset($_SESSION['user'])) { ?>
+					<button type="submit" class="btn btn-primary loginbutton">Logout</button>
+				<?php } else { ?>
+			  	<button type="submit" class="btn btn-primary loginbutton">Login</button>
+
+				<?php } ?>
 			</form>
+
+			<a href="<?= BASE_URL ?>/create_account" id='signupLink'>Sign Up!</a>
 
 			<ul class='primary-nav'>
 				<li><a href="<?= BASE_URL ?>">Home</a></li>

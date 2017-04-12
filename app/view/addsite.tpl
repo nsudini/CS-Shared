@@ -9,7 +9,7 @@
 
 
 	<div class="row">
-		<form class="form-horizontal" action="<?= BASE_URL ?>/add_site" method="post">
+		<form class="form-horizontal" action="<?= BASE_URL ?>/submit_site" method="post">
 			<div class="form-group">
 			<label class="control-label col-sm-6" for="sitename">Site Name:</label>
 				<div class="col-sm-10">
