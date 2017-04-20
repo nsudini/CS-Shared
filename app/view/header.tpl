@@ -20,8 +20,8 @@
 			</a>
 			<form class="form-inline loginForm" action="<?= BASE_URL ?>/login" method="post">
 				<?php if (!isset($_SESSION['user'])) { ?>
-					<label class="sr-only" for="inlineFormInput">Username</label>
-				  <input name="un" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Username">
+					<label class="sr-only" for="inlineFormInput">Email</label>
+				  <input name="email" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Email">
 
 				  <label class="sr-only" for="inlineFormInputGroup">Password</label>
 				  <div class="input-group mb-2 mr-sm-2 mb-sm-0">

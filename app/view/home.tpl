@@ -15,22 +15,25 @@
 			</div>
 		</div>
 	</div>
-	<?php for($i = 0; $i < count($rows); $i++) { ?>
+	<?php for($i = 0; $i < count($sites); $i++) { ?>
 		<div class="row site">
 			<div class="col-8 colsite">
-				<h4 class="siteName"><?= $rows[$i]['site_name'] ?></h4>
-				<h6 class="siteDate">(<?= $rows[$i]['date'] ?>, <?= $rows[$i]['time'] ?>)</h6>
+				<h4 class="siteName"><?= $sites[$i]['site_name'] ?></h4>
+				<h6 class="siteDate">(<?= $sites[$i]['date'] ?>, <?= $sites[$i]['time'] ?>)</h6>
 			</div>
 		</div>
 		<div class="row driver">
 			<div class="col-8 coldriver">
-				<h5 class="driver">Driver 1: 3 Seats</h5>
-				<button type="submit" class="btn btn-primary btn-sm request">Request</button>
+				<?php for($j = 0; $j < count($drivers); $j++) { 
+					if ($drivers[$j]['site_id'] == $i+1) {?>
+						<h5 class="driver"><?= $drivers[$j]['email'] ?>: <?= $drivers[$j]['available'] ?> Seats</h5>
+						<button type="submit" class="btn btn-primary btn-sm request">Request</button>
+				<?php }}?>
 			</div>
 		</div>
 		<div class="row addDriver">
 			<div class="col-6 coldriver">
-				<button type="submit" class="btn btn-primary btn-sm driver">Sign Up to Drive</button>
+				<a href="<?= BASE_URL ?>/drive_register/<?= $sites[$i]['id'] ?>"><button type="submit" class="btn btn-primary btn-sm driver">Sign Up to Drive</button></a>
 			</div>
 		</div>
 	<?php } ?>
