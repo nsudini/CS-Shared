@@ -26,7 +26,7 @@
 			<div class="col-8 coldriver">
 				<?php for($j = 0; $j < count($drivers); $j++) { 
 					if ($drivers[$j]['site_id'] == $i+1) {?>
-						<h5 class="driver"><?= $drivers[$j]['email'] ?>: <?= $drivers[$j]['available'] ?> Seats</h5>
+						<h5 class="driver"><?= $users[$drivers[$j]['user_id']-3]['email'] ?>: <?= $drivers[$j]['available'] ?> Seats</h5>
 						<button type="submit" class="btn btn-primary btn-sm request">Request</button>
 				<?php }}?>
 			</div>

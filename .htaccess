@@ -7,6 +7,8 @@ RewriteEngine on
 # Site
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^addsite/?$ app/controller/siteController.php?action=addsite [QSA,L]
+RewriteRule ^manage/?$ app/controller/siteController.php?action=manage_site [QSA,L]
+RewriteRule ^delete/([0-9]+)$/?$ app/controller/siteController.php?action=delete_site&site_id=$1 [QSA,L]
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^submit_site/?$ app/controller/siteController.php?action=submit_site [QSA,L]
 RewriteRule ^create_account/?$ app/controller/siteController.php?action=create_account [QSA,L]

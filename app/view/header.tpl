@@ -33,17 +33,17 @@
 					<button type="submit" class="btn btn-primary loginbutton">Logout</button>
 				<?php } else { ?>
 			  	<button type="submit" class="btn btn-primary loginbutton">Login</button>
-
+			  	<a href="<?= BASE_URL ?>/create_account" id='signupLink'><button class="btn btn-primary loginbutton">Sign Up!</button></a>
 				<?php } ?>
 			</form>
 
-			<a href="<?= BASE_URL ?>/create_account" id='signupLink'>Sign Up!</a>
+			<!-- <a href="<?= BASE_URL ?>/create_account" id='signupLink'>Sign Up!</a> -->
 
 			<ul class='primary-nav'>
 				<li><a href="<?= BASE_URL ?>">Home</a></li>
-				<?php if (isset($_SESSION['user']) && $_SESSION['user'] == 'admin') { ?>
+				<?php if (isset($_SESSION['user']) && $_SESSION['admin'] == 'admin') { ?>
 					<li><a href="<?= BASE_URL ?>/addsite">Add Visit</a></li>
-					<li><a href="<?= BASE_URL ?>">Manage Schedule</a></li>
+					<li><a href="<?= BASE_URL ?>/manage">Manage Schedule</a></li>
 				<?php } ?>
 			</ul>
 

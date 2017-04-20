@@ -56,6 +56,13 @@ class SiteController {
         $total = $_POST['seats'];
         $this->drive_submit($sn, $date, $time, $ptime, $model, $color, $total, $ploc);
         break;
+      case 'manage_site':
+        $this->manage_site();
+        break;
+      case 'delete_site':
+        $site_id = $_GET['site_id'];
+        $this->delete_site($site_id);
+        break;
     }
   }
 
@@ -64,6 +71,7 @@ class SiteController {
 
     $sites = $db->select("SELECT * FROM `site_visits`");
     $drivers = $db->select("SELECT * FROM `drivers`");
+    $users = $db->select("SELECT * FROM `users`");
 
     include_once SYSTEM_PATH.'/view/header.tpl';
     include_once SYSTEM_PATH.'/view/home.tpl';
@@ -128,6 +136,9 @@ class SiteController {
 
       if (count($rows) > 0) {
         $_SESSION['user'] = $email;
+        if ($rows[0]['admin'] == 1) {
+          $_SESSION['admin'] = 'admin';
+        }
       }
 
       header('Location: '.BASE_URL);
@@ -187,7 +198,7 @@ class SiteController {
     $seats = $db->quote($total);
 
     $site_row = $db->select("SELECT * FROM `site_visits` WHERE site_name=".$sn);
-    $user_row = $db->select("SELECT * FROM `users` WHERE email='".$_SESSION['user']."'");
+    $user_row = $db->select("SELECT * FROM `users` WHERE email=".$_SESSION['user']);
 
     $result = $db->query("INSERT INTO `drivers` (`pickup_time`,`user_id`, `email`,`site_id`, `total_seats`, `available`, `car_name`, `color`, `pickup_loc`) VALUES (" . $ptime . "," . $user_row[0]['id'] . ",'" . $user_row[0]['email'] . "'," . $site_row[0]['id'] . "," . $seats . "," . $seats . "," . $model . "," . $color . "," . $ploc . ")");
 
@@ -195,7 +206,33 @@ class SiteController {
       header('Location: '.BASE_URL);
     }
     else {
-      echo $user_row[0]['email'];
+      echo 'error';
     }
+  }
+
+  public function manage_site() {
+    $db = new Db();
+
+    $sites = $db->select("SELECT * FROM `site_visits`");
+    include_once SYSTEM_PATH.'/view/header.tpl';
+    include_once SYSTEM_PATH.'/view/manage.tpl';
+    include_once SYSTEM_PATH.'/view/footer.tpl';
+  }
+
+  public function delete_site($id) {
+    $db = new Db();
+
+    // $site_id = $db->quote($id);
+
+    $site_row = $db->query("DELETE FROM `site_visits` WHERE id=".$id);
+
+    if ($site_row) {
+      echo 'not null';
+    }
+    else {
+      echo $id;
+    }
+    
+    $this->manage_site();
   }
 }
