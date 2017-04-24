@@ -63,6 +63,11 @@ class SiteController {
         $site_id = $_GET['site_id'];
         $this->delete_site($site_id);
         break;
+      case 'request':
+        $site_id = $_GET['site_id'];
+        $driver_id = $_GET['driver_id'];
+        $this->request($site_id, $driver_id);
+        break;
     }
   }
 
@@ -139,6 +144,9 @@ class SiteController {
         if ($rows[0]['admin'] == 1) {
           $_SESSION['admin'] = 'admin';
         }
+        else {
+          $_SESSION['admin'] = '';
+        }
       }
 
       header('Location: '.BASE_URL);
@@ -176,7 +184,7 @@ class SiteController {
 
       $site_id = $db->quote($site_id);
 
-      $rows = $db->select("SELECT * FROM `site_visits` WHERE id=".$site_id);
+      $rows = $db->select("SELECT * FROM `site_visits` WHERE site_id=".$site_id);
 
       include_once SYSTEM_PATH.'/view/header.tpl';
       include_once SYSTEM_PATH.'/view/drive_register.tpl';
@@ -234,5 +242,21 @@ class SiteController {
     }
     
     $this->manage_site();
+  }
+
+  public function request($site_id, $driver_id) {
+    if (isset($_SESSION['user'])){
+      $db = new Db();
+
+      $driver_row = $db->query("UPDATE `drivers` SET available = GREATEST(0,available-1) WHERE site_id=".$site_id." and user_id=".$driver_id);
+
+      if ($driver_row) {
+        header('Location: '.BASE_URL);
+      }
+      else {
+        echo $site_id;
+      }
+    }
+    
   }
 }

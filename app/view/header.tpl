@@ -16,7 +16,8 @@
 	<body>
 		<header>
 			<a class="head" href="<?= BASE_URL ?>">
-				<h1 class="logo">CS<sup>Shared</sup></h1>
+				<!-- <h1 class="logo">CS<sup>Shared</sup></h1> -->
+				<img src="<?= BASE_URL ?>/public/img/CSSharedLogo.png" class="logo">
 			</a>
 			<form class="form-inline loginForm" action="<?= BASE_URL ?>/login" method="post">
 				<?php if (!isset($_SESSION['user'])) { ?>
@@ -33,10 +34,12 @@
 					<button type="submit" class="btn btn-primary loginbutton">Logout</button>
 				<?php } else { ?>
 			  	<button type="submit" class="btn btn-primary loginbutton">Login</button>
-			  	<a href="<?= BASE_URL ?>/create_account" id='signupLink'><button class="btn btn-primary loginbutton">Sign Up!</button></a>
+			  	<!-- <a href="<?= BASE_URL ?>/create_account" id='signupLink'><button class="btn btn-primary loginbutton">Sign Up!</button></a> -->
 				<?php } ?>
 			</form>
-
+			<?php if (!isset($_SESSION['user'])) { ?>
+				<a href="<?= BASE_URL ?>/create_account" id='signupLink'><button class="btn btn-primary">Sign Up!</button></a>
+			<?php } ?>
 			<!-- <a href="<?= BASE_URL ?>/create_account" id='signupLink'>Sign Up!</a> -->
 
 			<ul class='primary-nav'>
